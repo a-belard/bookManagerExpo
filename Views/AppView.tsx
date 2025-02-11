@@ -1,4 +1,3 @@
-import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
@@ -14,6 +13,7 @@ import BookDetailsView from "./BookDetailsView";
 import { LibraryProvider } from "../Controllers/LibraryContext";
 
 const Tab = createBottomTabNavigator();
+
 const LibraryStack = createStackNavigator<RootStackParamList>();
 
 const LibraryStackScreen = () => {
@@ -78,7 +78,6 @@ const AppView: React.FC = () => {
           />
         </Tab.Navigator>
       </NavigationContainer>
-      <StatusBar hidden />
     </LibraryProvider>
   );
 };

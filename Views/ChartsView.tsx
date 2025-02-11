@@ -10,7 +10,7 @@ import { BarChart } from "react-native-chart-kit";
 import { LibraryContext } from "../Controllers/LibraryContext";
 import { LibraryContextType } from "../types";
 
-const ChartsView = () => {
+const ChartsView: React.FC = () => {
   const { getBooksFor, getMaleAuthoredBooks, getFemaleAuthoredBooks } =
     useContext(LibraryContext) as LibraryContextType;
 

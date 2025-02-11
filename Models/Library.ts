@@ -1,5 +1,5 @@
-import { Book } from './Book';
-import { Gender } from './Gender';
+import { Book } from "./Book";
+import { Gender } from "./Gender";
 
 export class Library {
   private books: Book[];
@@ -16,7 +16,7 @@ export class Library {
       "The Prisoner of Zenda": ["Anthony Hope", Gender.MALE],
       "Adventures of Sherlock Holmes": ["Arthur Conan Doyle", Gender.MALE],
       "The Hound of the Baskervilles": ["Arthur Conan Doyle", Gender.MALE],
-      "Dracula": ["Bram Stoker", Gender.MALE],
+      Dracula: ["Bram Stoker", Gender.MALE],
       "A Christmas Carol": ["Charles Dickens", Gender.MALE],
       "A Tale of Two Cities": ["Charles Dickens", Gender.MALE],
       "David Copperfield": ["Charles Dickens", Gender.MALE],
@@ -26,9 +26,9 @@ export class Library {
       "Oliver Twist": ["Charles Dickens", Gender.MALE],
       "The Pickwick Papers": ["Charles Dickens", Gender.MALE],
       "Jane Eyre": ["Charlotte Bronte", Gender.FEMALE],
-      "Shirley": ["Charlotte Bronte", Gender.FEMALE],
+      Shirley: ["Charlotte Bronte", Gender.FEMALE],
       "The Professor": ["Charlotte Bronte", Gender.FEMALE],
-      "Villette": ["Charlotte Bronte", Gender.FEMALE],
+      Villette: ["Charlotte Bronte", Gender.FEMALE],
       "The Age of Innocence": ["Edith Wharton", Gender.FEMALE],
       "Wuthering Heights": ["Emily Bronte", Gender.FEMALE],
       "Crime and Punishment": ["Fyodor Dostoyevsky", Gender.MALE],
@@ -38,13 +38,13 @@ export class Library {
       "Animal Farm": ["George Orwell", Gender.MALE],
       "To Kill A Mockingbird": ["Harper Lee", Gender.FEMALE],
       "Uncle Tom's Cabin": ["Harriet Beecher Stowe", Gender.FEMALE],
-      "Walden": ["Henry David Thoreau", Gender.MALE],
+      Walden: ["Henry David Thoreau", Gender.MALE],
       "Last of the Mohicans": ["James Fenimore Cooper", Gender.MALE],
       "The Deerslayer": ["James Fenimore Cooper", Gender.MALE],
-      "Emma": ["Jane Austen", Gender.FEMALE],
+      Emma: ["Jane Austen", Gender.FEMALE],
       "Mansfield Park": ["Jane Austen", Gender.FEMALE],
       "Northanger Abbey": ["Jane Austen", Gender.FEMALE],
-      "Persuasion": ["Jane Austen", Gender.FEMALE],
+      Persuasion: ["Jane Austen", Gender.FEMALE],
       "Pride and Prejudice": ["Jane Austen", Gender.FEMALE],
       "Sense and Sensibility": ["Jane Austen", Gender.FEMALE],
       "Pilgrim's Progress": ["John Bunyan", Gender.MALE],
@@ -58,23 +58,26 @@ export class Library {
       "Alice's Adventures in Wonderland": ["Lewis Carroll", Gender.MALE],
       "Through The Looking Glass": ["Lewis Carroll", Gender.MALE],
       "Little Women": ["Louisa May Alcott", Gender.FEMALE],
-      "Frankenstein": ["Mary Shelley", Gender.FEMALE],
+      Frankenstein: ["Mary Shelley", Gender.FEMALE],
       "The Scarlet Letter": ["Nathaniel Hawthorne", Gender.MALE],
       "Fahrenheit 451": ["Ray Bradbury", Gender.MALE],
-      "Kidnapped": ["Robert Louis Stevenson", Gender.MALE],
-      "The Strange Case of Dr Jekyll and Mr Hyde": ["Robert Louis Stevenson", Gender.MALE],
+      Kidnapped: ["Robert Louis Stevenson", Gender.MALE],
+      "The Strange Case of Dr Jekyll and Mr Hyde": [
+        "Robert Louis Stevenson",
+        Gender.MALE,
+      ],
       "Treasure Island": ["Robert Louis Stevenson", Gender.MALE],
       "The Red Badge of Courage": ["Stephen Crane", Gender.MALE],
       "Rights of Man": ["Thomas Paine", Gender.MALE],
       "Les Miserables": ["Victor Hugo", Gender.MALE],
       "A Midsummer Night's Dream": ["William Shakespeare", Gender.MALE],
-      "Hamlet": ["William Shakespeare", Gender.MALE],
+      Hamlet: ["William Shakespeare", Gender.MALE],
       "Henry V": ["William Shakespeare", Gender.MALE],
       "Julius Caesar": ["William Shakespeare", Gender.MALE],
       "King Lear": ["William Shakespeare", Gender.MALE],
-      "Macbeth": ["William Shakespeare", Gender.MALE],
+      Macbeth: ["William Shakespeare", Gender.MALE],
       "Much Ado About Nothing": ["William Shakespeare", Gender.MALE],
-      "Othello": ["William Shakespeare", Gender.MALE],
+      Othello: ["William Shakespeare", Gender.MALE],
       "Romeo and Juliet": ["William Shakespeare", Gender.MALE],
       "The Comedy of Errors": ["William Shakespeare", Gender.MALE],
       "The Merchant of Venice": ["William Shakespeare", Gender.MALE],
@@ -84,19 +87,24 @@ export class Library {
       "The Hobbit or There and Back Again": ["J.R.R. Tolkien", Gender.MALE],
       "The Fellowship of the Ring": ["J.R.R. Tolkien", Gender.MALE],
       "The Two Towers": ["J.R.R. Tolkien", Gender.MALE],
-      "The Return of the King": ["J.R.R. Tolkien", Gender.MALE]
+      "The Return of the King": ["J.R.R. Tolkien", Gender.MALE],
     };
 
     for (const title in bookData) {
-      const [author, gender] = bookData[title]; 
+      const [author, gender] = bookData[title];
       this.books.push(new Book(title, author, gender, true));
       this.books.sort(Book.compare);
     }
   }
 
-  public addBookToLibrary(title: string, author: string, gender: Gender, displayed: boolean): void {
+  public addBookToLibrary(
+    title: string,
+    author: string,
+    gender: Gender,
+    displayed: boolean
+  ): void {
     this.books.push(new Book(title, author, gender, displayed));
-    this.books.sort(Book.compare); 
+    this.books.sort(Book.compare);
   }
 
   public getBooksFor(author: string): Book[] {

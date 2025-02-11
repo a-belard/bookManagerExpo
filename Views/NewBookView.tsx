@@ -1,36 +1,46 @@
-import React, { useContext, useState } from 'react';
-import { SafeAreaView, View, Text, TextInput, Button, Switch, StyleSheet, Alert, Keyboard } from 'react-native';
-import DropDownPicker from 'react-native-dropdown-picker';
-import { LibraryContext } from '../Controllers/LibraryContext'; 
-import { LibraryContextType } from '../types';
+import React, { useContext, useState } from "react";
+import {
+  SafeAreaView,
+  View,
+  Text,
+  TextInput,
+  Button,
+  Switch,
+  StyleSheet,
+  Alert,
+  Keyboard,
+} from "react-native";
+import DropDownPicker from "react-native-dropdown-picker";
+import { LibraryContext } from "../Controllers/LibraryContext";
+import { LibraryContextType } from "../types";
 
-const NewBookView = () => {
+const NewBookView: React.FC = () => {
   const { addBookToLibrary } = useContext(LibraryContext) as LibraryContextType;
 
-  const [title, setTitle] = useState('');
-  const [author, setAuthor] = useState('');
-  const [gender, setGender] = useState('Male');
+  const [title, setTitle] = useState("");
+  const [author, setAuthor] = useState("");
+  const [gender, setGender] = useState("Male");
   const [displayed, setDisplayed] = useState(false);
 
   const [open, setOpen] = useState(false);
 
   const [items, setItems] = useState([
-    { label: 'Male', value: 'Male' },
-    { label: 'Female', value: 'Female' },
-    { label: 'Other', value: 'Other' }
+    { label: "Male", value: "Male" },
+    { label: "Female", value: "Female" },
+    { label: "Other", value: "Other" },
   ]);
 
   const handleAddBook = () => {
     Keyboard.dismiss();
     if (title && author) {
       addBookToLibrary(title, author, gender, displayed);
-      setTitle('');
-      setAuthor('');
-      setGender('Male');
+      setTitle("");
+      setAuthor("");
+      setGender("Male");
       setDisplayed(false);
-      Alert.alert('Success', 'Book added to the library!');
+      Alert.alert("Success", "Book added to the library!");
     } else {
-      Alert.alert('Error', 'Please provide both title and author.');
+      Alert.alert("Error", "Please provide both title and author.");
     }
   };
 
@@ -61,23 +71,20 @@ const NewBookView = () => {
             setOpen={setOpen}
             setValue={setGender}
             setItems={setItems}
-            containerStyle={ styles.picker }
+            containerStyle={styles.picker}
           />
         </View>
 
         <View style={styles.switchContainer}>
           <Text style={styles.switchLabel}>Display book in library</Text>
-          <Switch
-            value={displayed}
-            onValueChange={setDisplayed}
-          />
+          <Switch value={displayed} onValueChange={setDisplayed} />
         </View>
 
         <View style={styles.buttonContainer}>
           <Button
             title="Add Book"
             onPress={handleAddBook}
-            disabled={!title || !author} 
+            disabled={!title || !author}
           />
         </View>
       </View>
@@ -85,22 +92,23 @@ const NewBookView = () => {
   );
 };
 
+// Styles
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: '#f8f8f8',
+    backgroundColor: "#f8f8f8",
   },
   heading: {
     fontSize: 24,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginLeft: 20,
     marginBottom: 20,
   },
   form: {
-    backgroundColor: '#fff',  
-    borderRadius: 10,  
-    padding: 15,  
+    backgroundColor: "#fff",
+    borderRadius: 10,
+    padding: 15,
     shadowOpacity: 0.2,
     shadowRadius: 10,
     shadowOffset: { width: 0, height: 2 },
@@ -109,22 +117,22 @@ const styles = StyleSheet.create({
   },
   input: {
     borderBottomWidth: 1,
-    borderBottomColor: '#ccc', 
+    borderBottomColor: "#ccc",
     paddingVertical: 8,
     paddingHorizontal: 10,
     fontSize: 16,
-    marginBottom: 15, 
+    marginBottom: 15,
   },
   pickerContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between', 
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
     marginBottom: 20,
     zIndex: 1,
   },
   pickerText: {
     fontSize: 16,
-    color: '#333',
+    color: "#333",
   },
   picker: {
     width: 100,
@@ -132,22 +140,21 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   switchContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     zIndex: 0,
   },
   switchLabel: {
     fontSize: 16,
-    color: '#333',
+    color: "#333",
   },
   buttonContainer: {
     borderTopWidth: 1,
-    borderTopColor: '#ccc',  
+    borderTopColor: "#ccc",
     paddingHorizontal: 10,
     marginTop: 40,
   },
-  
 });
 
 export default NewBookView;
